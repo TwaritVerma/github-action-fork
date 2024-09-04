@@ -28,6 +28,11 @@ jobs:
       - 
         run: echo "RELEASE_VERSION=${{ env.SDK_VERSION }}-${{ env.CURRENT_TIME }}-${{ env.COMMIT_ID }}" >> $GITHUB_ENV
       -
+        name: Validate Release Version
+        run: |
+          OLD_RELEASE_VERSION=$(git ls-remote --tags | cut -d/ -f3- | cut -d- -f1 | tail -1)
+          echo "$OLD_RELEASE_VERSION"
+      -
         name: Update release version using go generate
         run: go generate ./internal/version
       - 
