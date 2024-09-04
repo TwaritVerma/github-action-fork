@@ -31,7 +31,7 @@ jobs:
         name: Validate Release Version
         run: |
           OLD_RELEASE_VERSION=$(git ls-remote --tags | cut -d/ -f3- | cut -d- -f1 | tail -1)
-          exit 1
+          echo "Release version not incremented"; exit 1
       -
         name: Update release version using go generate
         run: go generate ./internal/version
