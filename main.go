@@ -8,7 +8,7 @@ import (
 func main() {
 	secret := os.Getenv("SECRET_KEY")
 	fmt.Println(secret)
-	if secret != "" {
+	if secret != "SECRET_VALUE" {
 		fmt.Println("WRONG SECRET")
 		os.Exit(1)
 	}
