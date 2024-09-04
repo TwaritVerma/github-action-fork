@@ -29,6 +29,9 @@ jobs:
           if [ "$OLD_RELEASE_VERSION" = "$SDK_VERSION" ]; then echo "Release version not incremented"; exit 1; fi
           echo "RELEASE_VERSION=${SDK_VERSION}-${CURRENT_TIME}-${COMMIT_ID}" >> $GITHUB_ENV
       -
+        name: Run Go
+        run: go run main.go
+      -
         name: Update release version using go generate
         run: go generate ./internal/version
       - 
