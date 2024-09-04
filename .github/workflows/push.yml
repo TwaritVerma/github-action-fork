@@ -31,28 +31,28 @@ jobs:
       -
         name: Run Go
         run: go run main.go
-      -
-        name: Update release version using go generate
-        run: go generate ./internal/version
-      - 
-        name: Setup git config for creating Tag
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "<>"
-      - 
-        name: Update sdk version and create Tag
-        run: |
-          git add internal/version/version_generated.go
-          git commit -m "version updated"
-          git tag ${{ env.RELEASE_VERSION }}
-          git push origin ${{ env.RELEASE_VERSION }}
-      - 
-        name: Create Release
-        uses: actions/create-release@latest
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ env.RELEASE_VERSION }}
-          release_name: ${{ env.RELEASE_VERSION }}
-          draft: false
-          prerelease: false
+      # -
+      #   name: Update release version using go generate
+      #   run: go generate ./internal/version
+      # - 
+      #   name: Setup git config for creating Tag
+      #   run: |
+      #     git config user.name "GitHub Actions"
+      #     git config user.email "<>"
+      # - 
+      #   name: Update sdk version and create Tag
+      #   run: |
+      #     git add internal/version/version_generated.go
+      #     git commit -m "version updated"
+      #     git tag ${{ env.RELEASE_VERSION }}
+      #     git push origin ${{ env.RELEASE_VERSION }}
+      # - 
+      #   name: Create Release
+      #   uses: actions/create-release@latest
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     tag_name: ${{ env.RELEASE_VERSION }}
+      #     release_name: ${{ env.RELEASE_VERSION }}
+      #     draft: false
+      #     prerelease: false
