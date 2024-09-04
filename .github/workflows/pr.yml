@@ -1,6 +1,6 @@
-name: PUSH Workflow
+name: PR Workflow
 on: 
-  push:
+  pull_request:
     branches:
       - new_branch
 jobs:
