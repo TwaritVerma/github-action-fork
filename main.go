@@ -6,9 +6,9 @@ import (
 )
 
 func main() {
-	secret := os.Getenv("FORK_SECRET")
+	secret := os.Getenv("SECRET_KEY")
 	fmt.Println(secret)
-	if secret != "mySecret" {
+	if secret != "SECRET_VALUE" {
 		fmt.Println("WRONG SECRET")
 		os.Exit(1)
 	}
